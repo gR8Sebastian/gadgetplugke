@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gadgetplug Ke - Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Copy :root, *, body, .container, section, .section-title, .btn, .btn-outline, header, .header-container, .logo, .logo img, .logo-text, .logo-text span, nav ul, nav a, nav a:hover, nav a::after, .header-icons, .cart-icon, .cart-icon:hover, .cart-count, .mobile-menu-btn from index.html */
+        .product-details {
+            padding: 5rem 0;
+        }
+        .product-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        .product-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        .product-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        .product-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .product-content .product-price {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .product-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        .product-specs h3, .product-reviews h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .product-specs ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .product-specs li {
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+        footer {
+            /* Use updated footer styles */
+        }
+              :root {
+            --primary: #ff9800;
+            --primary-dark: #e65100;
+            --dark: #222;
+            --light: #f7f7f7;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            width: 180px;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+            width: 220px;
+            outline: none;
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 15px;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .cart-icon:hover {
+            color: var(--primary);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 24px;
+            height: 24px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark);
+            margin-left: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 8rem 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            min-height: 70vh; /* Ensure it takes a good portion of the viewport */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            background: var(--white);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .category-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+
+        .category-content {
+            padding: 1.5rem;
+        }
+
+        .category-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .category-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        .featured-products .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .featured-products .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .featured-products .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .featured-products .product-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .featured-products .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .featured-products .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .featured-products .product-content {
+            padding: 1.5rem;
+        }
+
+        .featured-products .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-products .product-price {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .featured-products .product-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .featured-products .product-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        .featured-products .product-actions .btn {
+            flex: 1;
+            padding: 0.7rem 0;
+            font-size: 0.9rem;
+        }
+
+        .featured-products .view-details {
+            background: var(--dark);
+        }
+
+        .featured-products .view-details:hover {
+            background: #111;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--white);
+            position: relative;
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .testimonial-slide {
+            display: none;
+            text-align: center;
+            padding: 0 1.5rem;
+            animation: fade 1s;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .testimonial-content {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 20px 20px 0;
+            border-style: solid;
+            border-color: var(--light) transparent transparent;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-author h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .testimonial-author p {
+            color: var(--gray);
+        }
+
+        .testimonial-dots {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: var(--dark);
+            color: var(--white);
+            border: none;
+            padding: 0 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: #111;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width for better mobile stacking */
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            padding-top: 2rem;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content in columns */
+            text-align: center;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem; /* Slightly larger heading */
+            margin-bottom: 1.8rem; /* More space below heading */
+            position: relative;
+            padding-bottom: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary); /* Primary color for headings */
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%; /* Center the underline */
+            transform: translateX(-50%); /* Adjust for centering */
+            width: 60px; /* Slightly wider underline */
+            height: 4px; /* Thicker underline */
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .footer-about p {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center; /* Center text for contact info */
+        }
+
+        .footer-contact-info p {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center icons and text */
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-info i {
+            margin-right: 0.8rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center; /* Center social icons */
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px; /* Slightly larger icons */
+            height: 45px;
+            border-radius: 50%;
+            background: #333;
+            color: var(--white);
+            font-size: 1.2rem; /* Larger icon size */
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Subtle shadow */
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px) scale(1.1); /* More pronounced hover effect */
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-top: 2rem; /* Added margin for separation */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .search-bar input {
+                width: 150px;
+            }
+
+            .search-bar input:focus {
+                width: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap; /* Allow wrapping */
+                justify-content: center; /* Center items for mobile */
+                padding: 1rem 0;
+            }
+
+            .logo {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                display: none; /* Hidden by default for mobile */
+                flex-direction: column;
+                width: 100%;
+                background: var(--white);
+                position: absolute;
+                top: 75px; /* Adjust based on header height */
+                left: 0;
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid var(--light-gray);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+                margin: 0.5rem 0;
+            }
+
+            .header-icons {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 1.5rem;
+                top: 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 0;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .hero-buttons .btn {
+                width: 80%; /* Make buttons wider */
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+                padding-top: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .hero {
+                padding: 4rem 0;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section {
+                padding: 3rem 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            .categories-grid, .features-grid {
+                gap: 1.5rem;
+            }
+            .newsletter-form {
+                flex-direction: column;
+                border-radius: 10px; /* Less rounded for stacked inputs */
+            }
+            .newsletter-form input {
+                border-radius: 10px;
+                margin-bottom: 0.8rem;
+                padding: 0.8rem 1rem;
+            }
+            .newsletter-form button {
+                border-radius: 10px;
+                padding: 0.8rem 1rem;
+            }
+            .footer-column {
+                padding-bottom: 1.5rem; /* Add some padding between stacked columns */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Separator */
+            }
+            .footer-column:last-child {
+                border-bottom: none; /* No border for the last column */
+            }
+            .copyright {
+                padding-top: 1.5rem;
+            }
+        }
+        footer {
+    background: var(--dark);
+    color: var(--white);
+    padding: 4rem 0 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.footer-about p {
+    color: #bbb;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-contact-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-size: 0.95rem;
+}
+
+.footer-contact-info i {
+    margin-right: 0.8rem;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #333;
+    color: var(--white);
+    font-size: 1.2rem;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    transform: translateY(-5px) scale(1.1);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #444;
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://ui-avatars.com/api/?name=Gadgetplug+Ke&background=ff9800&color=fff&size=128" alt="Gadgetplug Ke Logo">
+                <div class="logo-text">Gadgetplug <span>Ke</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="cart-icon">
+                    <a href="cart.html">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count-header">0</span>
+                    </a>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section class="product-details">
+        <div class="container">
+            <div class="product-info">
+                <div class="product-image">
+                    <img id="product-image" src="" alt="Product Image">
+                </div>
+                <div class="product-content">
+                    <h2 id="product-name"></h2>
+                    <div class="product-price" id="product-price"></div>
+                    <p id="product-description"></p>
+                    <button class="btn add-to-cart" id="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-specs">
+                <h3>Specifications</h3>
+                <ul id="product-specs-list"></ul>
+            </div>
+            <div class="product-reviews">
+                <h3>Reviews</h3>
+                <p>Customer reviews coming soon!</p>
+            </div>
+        </div>
+    </section>
+    <footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column footer-about">
+                <h3>About Us</h3>
+                <p>Gadgetplug Ke is your premier destination for cutting-edge security solutions and premium electronics in Kenya. We are committed to delivering top-quality products and exceptional service.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/gadgetplugke" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/gadgetplugke" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/gadgetplugke" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/gadgetplugke" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <div class="footer-contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@gadgetplugke.co.ke</p>
+                    <p><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© <span id="current-year"></span> Gadgetplug Ke. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+    <script>
+        function getCartItems() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function addToCart(product) {
+            let cart = getCartItems();
+            const existingItem = cart.find(item => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cartItems = getCartItems();
+            const count = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count-header').textContent = count;
+        }
+
+       const products = [
+    { 
+        id: "1", 
+        name: "Hikvision CCTV System", 
+        price: 2499.99, 
+        image: "img/hikvision.jpeg", 
+        description: "Advanced surveillance system with 4K resolution and night vision capabilities.", 
+        specs: ["4K resolution", "Night vision", "Motion detection"] 
+    },
+    { 
+        id: "2", 
+        name: "Anker Solix F3800", 
+        price: 1050000, 
+        image: "img/anker solix.jpeg", 
+        description: "Premium power backup solution with smart home integration and solar compatibility.", 
+        specs: ["Smart home integration", "Solar compatible", "High capacity"] 
+    },
+    { 
+        id: "3", 
+        name: "Macbook Air M16", 
+        price: 475000, 
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+        description: "Ultra-slim laptop with M16 chip, 16GB RAM, and 1TB SSD storage.", 
+        specs: ["M16 chip", "16GB RAM", "1TB SSD"] 
+    },
+    { 
+        id: "4", 
+        name: "HIKVISION Turbo HD DVR", 
+        price: 9999, 
+        image: "img/1dvr.jpeg", 
+        description: "8-channel DVR with advanced recording features and remote access.", 
+        specs: ["8-channel", "Remote access", "Advanced recording"] 
+    },
+    { 
+        id: "5", 
+        name: "iPhone X 128GB Refurbished", 
+        price: 24999, 
+        image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        description: "Premium refurbished iPhone with 128GB storage and 12-month warranty.", 
+        specs: ["128GB storage", "12-month warranty", "Refurbished"] 
+    },
+    { 
+        id: "6", 
+        name: "Dahua IP Camera", 
+        price: 1299.99, 
+        image: "img/dahua.jpeg", 
+        description: "High-definition IP camera with night vision and motion detection.", 
+        specs: ["HD resolution", "Night vision", "Motion detection"] 
+    },
+    { 
+        id: "7", 
+        name: "Uniden Wireless Security System", 
+        price: 3499.99, 
+        image: "img/uniden.jpeg", 
+        description: "Wireless security system with four cameras and a monitor.", 
+        specs: ["Wireless", "4 cameras", "Monitor included"] 
+    },
+    { 
+        id: "8", 
+        name: "Samsung Galaxy S22", 
+        price: 89999, 
+        image: "img/s22.jpeg", 
+        description: "Samsung flagship smartphone with 5G connectivity.", 
+        specs: ["5G connectivity", "Flagship processor", "Premium camera"] 
+    },
+    { 
+        id: "9", 
+        name: "Sony WH-1000XM5 Headphones", 
+        price: 34999, 
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        description: "Industry-leading noise-cancelling headphones with superior sound quality.", 
+        specs: ["Noise-cancelling", "Premium sound", "Wireless"] 
+    },
+    { 
+        id: "10", 
+        name: "EcoFlow Delta Pro Portable Power Station", 
+        price: 249999, 
+        image: "img/ecoflow.jpeg", 
+        description: "High-capacity portable power station with fast charging and multiple outputs.", 
+        specs: ["High capacity", "Fast charging", "Multiple outputs"] 
+    },
+    { 
+        id: "11", 
+        name: "Jackery Explorer 1000 Portable Power Station", 
+        price: 129999, 
+        image: "img/jackery.jpeg", 
+        description: "Reliable portable power station with 1000W output and solar charging capability.", 
+        specs: ["1000W output", "Solar charging", "Portable"] 
+    },
+    { 
+        id: "12", 
+        name: "Google Nest Hub", 
+        price: 9999, 
+        image: "img/googlenest.jpeg", 
+        description: "Smart display with Google Assistant and 7-inch touchscreen.", 
+        specs: ["Google Assistant", "7-inch display", "Smart home control"] 
+    },
+    { 
+        id: "13", 
+        name: "Philips Hue Smart Lighting Kit", 
+        price: 14999, 
+        image: "img/phillips.jpeg", 
+        description: "Smart lighting kit with color-changing bulbs and bridge.", 
+        specs: ["Color-changing", "Smart control", "Bridge included"] 
+    },
+    { 
+        id: "14", 
+        name: "Lorex 4K Security Camera System", 
+        price: 4999.99, 
+        image: "img/lorex.jpeg", 
+        description: "4K ultra HD security camera system with 8 channels and 2TB hard drive.", 
+        specs: ["4K resolution", "8 channels", "2TB storage"] 
+    },
+    { 
+        id: "15", 
+        name: "Arlo Pro 4 Wireless Security Camera", 
+        price: 2999.99, 
+        image: "img/arlo.jpeg", 
+        description: "Wireless security camera with 2K video, color night vision, and direct Wi-Fi connection.", 
+        specs: ["2K video", "Color night vision", "Wireless"] 
+    },
+    { 
+        id: "16", 
+        name: "Dell XPS 13 Laptop", 
+        price: 149999, 
+        image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80", 
+        description: "Powerful laptop with 11th Gen Intel Core processors and stunning 13.4-inch display.", 
+        specs: ["Intel Core i7", "13.4-inch display", "Ultra-portable"] 
+    },
+    { 
+        id: "17", 
+        name: "Apple AirPods Pro", 
+        price: 24999, 
+        image: "img/airpods.jpeg", 
+        description: "Wireless earbuds with active noise cancellation and transparency mode.", 
+        specs: ["Noise cancellation", "Transparency mode", "Wireless charging"] 
+    },
+    { 
+        id: "18", 
+        name: "Goal Zero Yeti 1500X Portable Power Station", 
+        price: 199999, 
+        image: "img/zerro.jpeg", 
+        description: "High-capacity power station with 1500W output and multiple charging options.", 
+        specs: ["1500W output", "Multiple ports", "Solar compatible"] 
+    },
+    { 
+        id: "19", 
+        name: "Bluetti AC200P Portable Power Station", 
+        price: 179999, 
+        image: "img/bluetti1.jpeg", 
+        description: "Versatile power station with 2000W output and solar charging capability.", 
+        specs: ["2000W output", "Solar charging", "Expandable capacity"] 
+    },
+    { 
+        id: "20", 
+        name: "Amazon Echo Show 10", 
+        price: 24999, 
+        image: "img/amazon.jpeg", 
+        description: "Smart display with 10.1-inch screen, premium sound, and Alexa built-in.", 
+        specs: ["10.1-inch screen", "Alexa built-in", "Premium sound"] 
+    },
+    { 
+        id: "21", 
+        name: "Ring Video Doorbell Pro 2", 
+        price: 19999, 
+        image: "img/ring.jpeg", 
+        description: "Smart doorbell with 1536p HD video, 3D motion detection, and bird's eye view.", 
+        specs: ["1536p HD", "3D motion detection", "Bird's eye view"] 
+    }
+];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = products.find(p => p.id === productId);
+
+        if (product) {
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = `Ksh ${product.price.toLocaleString()}`;
+            document.getElementById('product-description').textContent = product.description;
+            const specsList = document.getElementById('product-specs-list');
+            product.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.textContent = spec;
+                specsList.appendChild(li);
+            });
+            document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+                addToCart(product);
+                alert(`${product.name} added to cart!`);
+            });
+        } else {
+            document.querySelector('.product-info').innerHTML = '<p>Product not found.</p>';
+        }
+
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

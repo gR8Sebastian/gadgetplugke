@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gadgetplug Ke - Checkout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff9800;
+      --primary-dark: #e65100;
+      --dark: #222;
+      --light: #f7f7f7;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --white: #ffffff;
+      --transition: all 0.3s ease;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; }
+    .container { width: 100%; max-width: 600px; margin: 2rem auto; padding: 2rem 1.5rem; background: var(--white); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    h2 { text-align: center; margin-bottom: 2rem; color: var(--primary); }
+    form { display: flex; flex-direction: column; gap: 1.2rem; }
+    label { font-weight: 500; margin-bottom: 0.3rem; }
+    input, select { padding: 0.8rem 1rem; border: 1px solid var(--light-gray); border-radius: 8px; font-size: 1rem; }
+    input:focus, select:focus { border-color: var(--primary); outline: none; }
+    .order-summary { background: var(--light-gray); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; }
+    .order-summary h3 { margin-bottom: 1rem; color: var(--primary-dark); }
+    .order-summary ul { list-style: none; padding: 0; margin: 0; }
+    .order-summary li { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+    .order-summary .total { font-weight: bold; color: var(--primary-dark); margin-top: 1rem; }
+    .btn { display: inline-block; padding: 0.9rem 2rem; background: var(--primary); color: var(--white); border: none; border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: var(--transition); text-align: center; margin-top: 1.5rem; }
+    .btn:hover { background: var(--primary-dark); }
+    .success-message { text-align: center; color: var(--primary-dark); font-size: 1.2rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Checkout</h2>
+    <div class="order-summary" id="order-summary">
+      <h3>Order Summary</h3>
+      <ul id="summary-list"></ul>
+      <div class="total" id="summary-total">Total: Ksh 0</div>
+    </div>
+    <form id="checkout-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+      <label for="address">Delivery Address</label>
+      <input type="text" id="address" name="address" required>
+      <label for="payment">Payment Method</label>
+      <select id="payment" name="payment" required>
+        <option value="">Select Payment Method</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="cash">Cash on Delivery</option>
+      </select>
+      <button type="submit" class="btn">Place Order</button>
+    </form>
+    <div class="success-message" id="success-message" style="display:none;">Thank you for your order! You will receive a confirmation email soon.</div>
+  </div>
+  <script>
+    function getCartItems() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+    function renderOrderSummary() {
+      const cart = getCartItems();
+      const summaryList = document.getElementById('summary-list');
+      const summaryTotal = document.getElementById('summary-total');
+      summaryList.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${item.name} (x${item.quantity})</span><span>Ksh ${item.price.toLocaleString()}</span>`;
+        summaryList.appendChild(li);
+        total += item.price * item.quantity;
+      });
+      summaryTotal.textContent = 'Total: Ksh ' + total.toLocaleString();
+    }
+    document.addEventListener('DOMContentLoaded', renderOrderSummary);
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('cart');
+      document.getElementById('checkout-form').style.display = 'none';
+      document.getElementById('order-summary').style.display = 'none';
+      document.getElementById('success-message').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

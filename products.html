@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gadgetplug Ke - Products</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    :root {
+      --primary: #ff9800;
+      --primary-dark: #e65100;
+      --dark: #222;
+      --light: #f7f7f7;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --white: #ffffff;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      margin: 0.8rem auto;
+      border-radius: 2px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+    
+    /* Header Styles */
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      gap: 1.5rem;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 0.8rem;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    
+    .logo-text span {
+      color: var(--primary);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .search-container {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+    }
+    
+    .search-container input {
+      width: 100%;
+      padding: 0.8rem 1.5rem 0.8rem 3rem;
+      border: 1px solid var(--light-gray);
+      border-radius: 50px;
+      font-size: 1rem;
+      background: var(--light);
+      transition: var(--transition);
+    }
+    
+    .search-container input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+      pointer-events: none;
+    }
+    
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--dark);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    
+    .cart-icon:hover {
+      color: var(--primary);
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    
+    /* Products Section */
+    .products {
+      background: var(--white);
+      padding: 5rem 0;
+    }
+    
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .filter-btn {
+      padding: 0.7rem 1.5rem;
+      background: var(--light);
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+    
+    .product-card {
+      background: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .product-image {
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
+    }
+    
+    .product-content {
+      padding: 1.5rem;
+    }
+    
+    .product-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .product-price {
+      color: var(--primary);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .product-description {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+    
+    .product-actions .btn {
+      flex: 1;
+      padding: 0.7rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .view-details {
+      background: var(--dark);
+    }
+    
+    .view-details:hover {
+      background: #111;
+    }
+    
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem;
+      background: var(--light);
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+    
+    .no-results i {
+      font-size: 3rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    .no-results p {
+      font-size: 1.2rem;
+      color: var(--gray);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+      border-top: 2px solid var(--primary);
+      padding-top: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: #bbb;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+    
+    .footer-contact p {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      color: #bbb;
+    }
+    
+    .footer-contact i {
+      margin-right: 1rem;
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #333;
+      color: var(--white);
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #444;
+      color: #bbb;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-top: 2rem;
+    }
+
+    /* Cart Modal */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .cart-modal.active {
+      display: flex;
+    }
+    .cart-content {
+      background: #fff;
+      color: #222;
+      border-radius: 12px;
+      padding: 2rem;
+      min-width: 320px;
+      max-width: 90vw;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .cart-content h2 {
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    .cart-items {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 1.5rem;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-item-title {
+      font-weight: 500;
+    }
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: #e65100;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+    .cart-total {
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    .cart-checkout {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    .cart-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #888;
+      cursor: pointer;
+    }
+    .cart-close:hover {
+      color: #e65100;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      nav ul {
+        gap: 1.5rem;
+      }
+      
+      .search-container {
+        max-width: 300px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .search-container {
+        display: none;
+      }
+      
+      .mobile-search-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        color: var(--dark);
+        cursor: pointer;
+      }
+      
+      .mobile-search-container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 100;
+      }
+      
+      .mobile-search-container.active {
+        display: block;
+      }
+      
+      .mobile-search-container .search-container {
+        display: block;
+        max-width: 100%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .filters {
+        justify-content: flex-start;
+      }
+      
+      .header-container {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="https://ui-avatars.com/api/?name=Gadgetplug+Ke&background=ff9800&color=fff&size=128" alt="Gadgetplug Ke Logo">
+        <div class="logo-text">Gadgetplug <span>Ke</span></div>
+      </div>
+      
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#" class="active">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Search Container -->
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search products...">
+      </div>
+      
+      <div class="header-right">
+        <div class="cart-icon">
+          <a href="cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count-header">0</span>
+          </a>
+        </div>
+        
+        <button class="mobile-search-btn" id="mobile-search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile search container -->
+    <div class="mobile-search-container" id="mobile-search-container">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="mobile-search-input" placeholder="Search products...">
+      </div>
+    </div>
+  </header>
+  
+  <!-- Products Section -->
+  <section class="products">
+    <div class="container">
+      <h2 class="section-title">Our <span>Products</span></h2>
+      
+      <div class="filters">
+        <button class="filter-btn active">All Products</button>
+        <button class="filter-btn">Security Systems</button>
+        <button class="filter-btn">Electronics</button>
+        <button class="filter-btn">Power Solutions</button>
+        <button class="filter-btn">Smart Home</button>
+      </div>
+      
+      <div class="product-grid" id="product-grid">
+        <!-- Product 1: Security Systems -->
+        <div class="product-card" data-category="Security Systems">
+          <div class="product-image">
+            <img src="img/hikvision.jpeg" alt="Hikvision CCTV">
+          </div>
+          <div class="product-content">
+            <h3>Hikvision Home CCTV </h3>
+            <div class="product-price">Ksh 4,499.99</div>
+            <p class="product-description">Advanced surveillance system with 4K resolution and night vision capabilities.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=1" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Power Solutions -->
+        <div class="product-card" data-category="Power Solutions">
+          <div class="product-image">
+            <img src="img/anker solix.jpeg" alt="Anker Solix F3800 Power Backup">
+          </div>
+          <div class="product-content">
+            <h3>Anker Solix F3800 Power Backup</h3>
+            <div class="product-price">Ksh 1,050,000</div>
+            <p class="product-description">Premium power backup solution with smart home integration and solar compatibility.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=2" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Electronics -->
+        <div class="product-card" data-category="Electronics">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Macbook Air M16">
+          </div>
+          <div class="product-content">
+            <h3>Macbook Air M16</h3>
+            <div class="product-price">Ksh 475,000</div>
+            <p class="product-description">Ultra-slim laptop with M16 chip, 16GB RAM, and 1TB SSD storage.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=3" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4: Security Systems -->
+        <div class="product-card" data-category="Security Systems">
+          <div class="product-image">
+            <img src="img/1dvr.jpeg" alt="HIKVISION Turbo HD DVR">
+          </div>
+          <div class="product-content">
+            <h3>HIKVISION Turbo HD DVR</h3>
+            <div class="product-price">Ksh 9,999</div>
+            <p class="product-description">8-channel DVR with advanced recording features and remote access.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=4" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5: Electronics -->
+        <div class="product-card" data-category="Electronics">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="iPhone X">
+          </div>
+          <div class="product-content">
+            <h3>iPhone X 128GB Refurbished</h3>
+            <div class="product-price">Ksh 24,999</div>
+            <p class="product-description">Premium refurbished iPhone with 128GB storage and 12-month warranty.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=5" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6: Security Systems -->
+        <div class="product-card" data-category="Security Systems">
+          <div class="product-image">
+            <img src="img/dahua.jpeg" alt="Dahua IP Camera">
+          </div>
+          <div class="product-content">
+            <h3>Dahua IP Camera</h3>
+            <div class="product-price">Ksh 1,299.99</div>
+            <p class="product-description">High-definition IP camera with night vision and motion detection.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=6" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7: Security Systems -->
+        <div class="product-card" data-category="Security Systems">
+          <div class="product-image">
+            <img src="img/uniden.jpeg" alt="Uniden Wireless Security System">
+          </div>
+          <div class="product-content">
+            <h3>Uniden Wireless Security System</h3>
+            <div class="product-price">Ksh 3,499.99</div>
+            <p class="product-description">Wireless security system with four cameras and a monitor.</p>
+            <div class="product-actions">
+            <button class="btn">Add to Cart</button>
+            <a href="product-details.html?id=7" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8: Electronics -->
+        <div class="product-card" data-category="Electronics">
+          <div class="product-image">
+            <img src="img/s22.jpeg" alt="Samsung Galaxy S22">
+          </div>
+          <div class="product-content">
+            <h3>Samsung Galaxy S22</h3>
+            <div class="product-price">Ksh 89,999</div>
+            <p class="product-description">Samsung flagship smartphone with 5G connectivity.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=8" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 9: Electronics -->
+        <div class="product-card" data-category="Electronics">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Sony WH-1000XM5 Headphones">
+          </div>
+          <div class="product-content">
+            <h3>Sony WH-1000XM5 Headphones</h3>
+            <div class="product-price">Ksh 34,999</div>
+            <p class="product-description">Industry-leading noise-cancelling headphones with superior sound quality.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=9" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 10: Power Solutions -->
+        <div class="product-card" data-category="Power Solutions">
+          <div class="product-image">
+            <img src="img/ecoflow.jpeg" alt="EcoFlow Delta Pro Portable Power Station">
+          </div>
+          <div class="product-content">
+            <h3>EcoFlow Delta Pro Portable Power Station</h3>
+            <div class="product-price">Ksh 249,999</div>
+            <p class="product-description">High-capacity portable power station with fast charging and multiple outputs.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=10" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 11: Power Solutions -->
+        <div class="product-card" data-category="Power Solutions">
+          <div class="product-image">
+            <img src="img/jackery.jpeg" alt="Jackery Explorer 1000 Portable Power Station">
+          </div>
+          <div class="product-content">
+            <h3>Jackery Explorer 1000 Portable Power Station</h3>
+            <div class="product-price">Ksh 129,999</div>
+            <p class="product-description">Reliable portable power station with 1000W output and solar charging capability.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=11" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 12: Smart Home -->
+        <div class="product-card" data-category="Smart Home">
+          <div class="product-image">
+            <img src="img/googlenest.jpeg" alt="Google Nest Hub">
+          </div>
+          <div class="product-content">
+            <h3>Google Nest Hub</h3>
+            <div class="product-price">Ksh 9,999</div>
+            <p class="product-description">Smart display with Google Assistant and 7-inch touchscreen.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=12" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 13: Smart Home -->
+        <div class="product-card" data-category="Smart Home">
+          <div class="product-image">
+            <img src="img/phillips.jpeg" alt="Philips Hue Smart Lighting Kit">
+          </div>
+          <div class="product-content">
+            <h3>Philips Hue Smart Lighting Kit</h3>
+            <div class="product-price">Ksh 14,999</div>
+            <p class="product-description">Smart lighting kit with color-changing bulbs and bridge.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=13" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 14: Security Systems -->
+        <div class="product-card" data-category="Security Systems">
+          <div class="product-image">
+            <img src="img/lorex.jpeg" alt="Lorex 4K Security Camera System">
+          </div>
+          <div class="product-content">
+            <h3>Lorex 4K Security Camera System</h3>
+            <div class="product-price">Ksh 4,999.99</div>
+            <p class="product-description">4K ultra HD security camera system with 8 channels and 2TB hard drive.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=14" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 15: Security Systems -->
+        <div class="product-card" data-category="Security Systems">
+          <div class="product-image">
+            <img src="img/arlo.jpeg" alt="Arlo Pro 4 Wireless Security Camera">
+          </div>
+          <div class="product-content">
+            <h3>Arlo Pro 4 Wireless Security Camera</h3>
+            <div class="product-price">Ksh 2,999.99</div>
+            <p class="product-description">Wireless security camera with 2K video, color night vision, and direct Wi-Fi connection.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=15" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 16: Electronics -->
+        <div class="product-card" data-category="Electronics">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Dell XPS 13 Laptop">
+          </div>
+          <div class="product-content">
+            <h3>Dell XPS 13 Laptop</h3>
+            <div class="product-price">Ksh 149,999</div>
+            <p class="product-description">Powerful laptop with 11th Gen Intel Core processors and stunning 13.4-inch display.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=16" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 17: Electronics -->
+        <div class="product-card" data-category="Electronics">
+          <div class="product-image">
+            <img src="img/airpods.jpeg" alt="Apple AirPods Pro">
+          </div>
+          <div class="product-content">
+            <h3>Apple AirPods Pro</h3>
+            <div class="product-price">Ksh 24,999</div>
+            <p class="product-description">Wireless earbuds with active noise cancellation and transparency mode.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=17" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 18: Power Solutions -->
+        <div class="product-card" data-category="Power Solutions">
+          <div class="product-image">
+            <img src="img/zerro.jpeg" alt="Goal Zero Yeti 1500X Portable Power Station">
+          </div>
+          <div class="product-content">
+            <h3>Goal Zero Yeti 1500X Portable Power Station</h3>
+            <div class="product-price">Ksh 199,999</div>
+            <p class="product-description">High-capacity power station with 1500W output and multiple charging options.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=18" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 19: Power Solutions -->
+        <div class="product-card" data-category="Power Solutions">
+          <div class="product-image">
+            <img src="img/bluetti1.jpeg" alt="Bluetti AC200P Portable Power Station">
+          </div>
+          <div class="product-content">
+            <h3>Bluetti AC200P Portable Power Station</h3>
+            <div class="product-price">Ksh 179,999</div>
+            <p class="product-description">Versatile power station with 2000W output and solar charging capability.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=19" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 20: Smart Home -->
+        <div class="product-card" data-category="Smart Home">
+          <div class="product-image">
+            <img src="img/amazon.jpeg" alt="Amazon Echo Show 10">
+          </div>
+          <div class="product-content">
+            <h3>Amazon Echo Show 10</h3>
+            <div class="product-price">Ksh 24,999</div>
+            <p class="product-description">Smart display with 10.1-inch screen, premium sound, and Alexa built-in.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=20" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Product 21: Smart Home -->
+        <div class="product-card" data-category="Smart Home">
+          <div class="product-image">
+            <img src="img/ring.jpeg" alt="Ring Video Doorbell Pro 2">
+          </div>
+          <div class="product-content">
+            <h3>Ring Video Doorbell Pro 2</h3>
+            <div class="product-price">Ksh 19,999</div>
+            <p class="product-description">Smart doorbell with 1536p HD video, 3D motion detection, and bird's eye view.</p>
+            <div class="product-actions">
+              <button class="btn">Add to Cart</button>
+              <a href="product-details.html?id=21" class="btn view-details">Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column footer-about">
+          <h3>About Us</h3>
+          <p>Gadgetplug Ke is your premier destination for cutting-edge security solutions and premium electronics in Kenya. We are committed to delivering top-quality products and exceptional service.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/gadgetplugke" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/gadgetplugke" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/gadgetplugke" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/gadgetplugke" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Info</h3>
+          <div class="footer-contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> Westlands, Nairobi, Kenya</p>
+            <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+            <p><i class="fas fa-envelope"></i> info@gadgetplugke.co.ke</p>
+            <p><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© <span id="current-year"></span> Gadgetplug Ke. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <button class="cart-close" id="cart-close-btn"><i class="fas fa-times"></i></button>
+      <h2>Your Cart</h2>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-total" id="cart-total">Total: Ksh 0</div>
+      <div class="cart-checkout">
+        <button class="btn" id="cart-checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Cart functionality
+    function getCartItems() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    function addToCart(product) {
+      let cart = getCartItems();
+      const existingItem = cart.find(item => item.id === product.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cartItems = getCartItems();
+      const count = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      document.querySelector('.cart-count').textContent = count;
+    }
+
+    document.querySelectorAll('.product-actions .btn:first-child').forEach(button => {
+      button.classList.add('add-to-cart');
+      button.dataset.id = button.closest('.product-card').querySelector('h3').textContent.replace(/\s+/g, '-').toLowerCase();
+      button.dataset.name = button.closest('.product-card').querySelector('h3').textContent;
+      button.dataset.price = button.closest('.product-card').querySelector('.product-price').textContent.replace(/[^\d.]/g, '').replace(/,/g, '');
+      button.dataset.image = button.closest('.product-card').querySelector('img').src;
+
+      button.addEventListener('click', () => {
+        const product = {
+          id: button.dataset.id,
+          name: button.dataset.name,
+          price: parseFloat(button.dataset.price),
+          image: button.dataset.image
+        };
+        addToCart(product);
+        button.style.transform = 'scale(1.1)';
+        setTimeout(() => button.style.transform = 'scale(1)', 300);
+      });
+    });
+
+    // Product filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const selectedCategory = btn.textContent;
+        productCards.forEach(card => {
+          if (selectedCategory === 'All Products' || card.dataset.category === selectedCategory) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    const mobileSearchInput = document.getElementById('mobile-search-input');
+    const productGrid = document.getElementById('product-grid');
+    const mobileSearchBtn = document.getElementById('mobile-search-btn');
+    const mobileSearchContainer = document.getElementById('mobile-search-container');
+
+    function filterProducts(searchTerm) {
+      let hasResults = false;
+      searchTerm = searchTerm.toLowerCase().trim();
+      productCards.forEach(card => {
+        const productName = card.querySelector('h3').textContent.toLowerCase();
+        if (productName.includes(searchTerm)) {
+          card.style.display = 'block';
+          hasResults = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      let noResults = productGrid.querySelector('.no-results');
+      if (!hasResults) {
+        if (!noResults) {
+          noResults = document.createElement('div');
+          noResults.className = 'no-results';
+          noResults.innerHTML = `
+            <i class="fas fa-search"></i>
+            <p>No products match your search "<strong>${searchTerm}</strong>"</p>
+          `;
+          productGrid.appendChild(noResults);
+        }
+      } else if (noResults) {
+        noResults.remove();
+      }
+    }
+
+    searchInput.addEventListener('input', () => filterProducts(searchInput.value));
+    mobileSearchInput.addEventListener('input', () => filterProducts(mobileSearchInput.value));
+    mobileSearchBtn.addEventListener('click', () => {
+      mobileSearchContainer.classList.toggle('active');
+      if (mobileSearchContainer.classList.contains('active')) {
+        mobileSearchInput.focus();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileSearchContainer.contains(e.target) && !mobileSearchBtn.contains(e.target) && mobileSearchContainer.classList.contains('active')) {
+        mobileSearchContainer.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+  </script>
+</body>
+</html>

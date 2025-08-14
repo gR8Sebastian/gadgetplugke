@@ -43,7 +43,13 @@
       <ul id="summary-list"></ul>
       <div class="total" id="summary-total">Total: Ksh 0</div>
     </div>
-    <form id="checkout-form">
+
+    <form id="checkout-form" action="https://api.web3forms.com/submit" method="POST">
+
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+      <input type="hidden" name="subject" value="New Order from Gadgetplug Ke">
+
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email Address</label>
@@ -57,35 +63,106 @@
         <option value="card">Credit/Debit Card</option>
         <option value="cash">Cash on Delivery</option>
       </select>
+      
+      <input type="hidden" id="order_details" name="order_details">
+
       <button type="submit" class="btn">Place Order</button>
     </form>
+    
     <div class="success-message" id="success-message" style="display:none;">Thank you for your order! You will receive a confirmation email soon.</div>
   </div>
+
   <script>
+    // --- Functions to get cart items and display them ---
     function getCartItems() {
+      // Fetches cart from localStorage or returns an empty array
       return JSON.parse(localStorage.getItem('cart')) || [];
     }
+
     function renderOrderSummary() {
       const cart = getCartItems();
       const summaryList = document.getElementById('summary-list');
       const summaryTotal = document.getElementById('summary-total');
+      const orderDetailsInput = document.getElementById('order_details');
+      
       summaryList.innerHTML = '';
       let total = 0;
+      let orderDetailsText = "Order Summary:\n"; // This will be sent in the form
+
+      // Loop through cart items to display them
       cart.forEach(item => {
         const li = document.createElement('li');
         li.innerHTML = `<span>${item.name} (x${item.quantity})</span><span>Ksh ${item.price.toLocaleString()}</span>`;
         summaryList.appendChild(li);
         total += item.price * item.quantity;
+        // Add item to the text details for form submission
+        orderDetailsText += `- ${item.name} (x${item.quantity}): Ksh ${(item.price * item.quantity).toLocaleString()}\n`;
       });
+
+      // Display the final total
       summaryTotal.textContent = 'Total: Ksh ' + total.toLocaleString();
+      orderDetailsText += `\nTotal: Ksh ${total.toLocaleString()}`;
+
+      // Set the value of the hidden input field to our order details text
+      orderDetailsInput.value = orderDetailsText;
     }
+
+    // Run the order summary function when the page loads
     document.addEventListener('DOMContentLoaded', renderOrderSummary);
-    document.getElementById('checkout-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      localStorage.removeItem('cart');
-      document.getElementById('checkout-form').style.display = 'none';
-      document.getElementById('order-summary').style.display = 'none';
-      document.getElementById('success-message').style.display = 'block';
+
+    // --- Form Submission Logic ---
+    const form = document.getElementById('checkout-form');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop the browser from submitting the form directly
+      
+      // Get all form data
+      const formData = new FormData(form);
+      // Convert FormData to a simple object
+      const object = Object.fromEntries(formData);
+      // Convert the object to a JSON string
+      const json = JSON.stringify(object);
+
+      // Give user feedback that submission is in progress
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.innerHTML = "Placing Order...";
+      submitButton.disabled = true;
+
+      // Use the Fetch API to send the data to Web3Forms
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let jsonResponse = await response.json();
+        if (response.status == 200) {
+          // --- On SUCCESS ---
+          localStorage.removeItem('cart'); // Clear the cart
+          form.style.display = 'none'; // Hide the form
+          document.getElementById('order-summary').style.display = 'none'; // Hide the summary
+          successMessage.style.display = 'block'; // Show success message
+        } else {
+          // --- On ERROR ---
+          console.log(response);
+          alert('There was an error submitting your order. Please try again.');
+          // Re-enable the button so the user can try again
+          submitButton.innerHTML = "Place Order";
+          submitButton.disabled = false;
+        }
+      })
+      .catch(error => {
+        // --- On NETWORK ERROR ---
+        console.log(error);
+        alert('There was an error submitting your order. Please check your connection and try again.');
+        // Re-enable the button
+        submitButton.innerHTML = "Place Order";
+        submitButton.disabled = false;
+      });
     });
   </script>
 </body>
